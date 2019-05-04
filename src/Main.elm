@@ -47,6 +47,7 @@ type Msg
     | Change Int String
     | Shuffle
     | SetResult (List String)
+    | ResetInput
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -76,6 +77,11 @@ update msg model =
             , Cmd.none
             )
 
+        ResetInput ->
+          ( { model | inputValues = [], resultValues = [] }
+          , Cmd.none
+          )
+
 
 
 -- SUBSCRIPTIONS
@@ -94,9 +100,9 @@ view : Model -> Html Msg
 view model =
     div []
         [ div [] (List.indexedMap viewInput model.inputValues)
-        , ul [] (List.map viewValue model.inputValues)
         , button [ onClick Add ] [ text "+" ]
         , button [ onClick Shuffle ] [ text "shuffle" ]
+        , button [ onClick ResetInput ] [ text "reset" ]
         , ul [] (List.map viewValue model.resultValues)
         ]
 
