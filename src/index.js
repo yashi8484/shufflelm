@@ -1,5 +1,6 @@
-const { Elm } = require('./Main.elm');
+import { Elm } from './Main.elm';
+import './style.css';
 
-var app = Elm.Main.init({
+const app = Elm.Main.init({
   node: document.querySelector('main')
 });

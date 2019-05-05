@@ -1,0 +1,36 @@
+@tailwind preflight;
+@tailwind components;
+@tailwind utilities;
+
+/* base */
+html {
+  @apply font-sans;
+}
+
+/* modules */
+.btn {
+  @apply shadow-lg uppercase py-2 px-4 rounded-full;
+}
+.btn-blue {
+  @apply bg-blue text-white;
+}
+.btn-red {
+  @apply bg-red text-white;
+}
+
+.card-title {
+  @apply font-bold text-xl mb-2;
+}
+.card {
+  @apply p-2 border border-grey-light shadow-lg;
+}
+
+.input-text {
+  @apply appearance-none bg-transparent border-b border-b-2 border-grey-light py-1 px-2 text-grey-darker leading-tight;
+}
+.input-text:focus {
+  outline: 0;
+}
+.input-text.focus-blue:focus {
+  @apply border-blue;
+}

@@ -98,34 +98,35 @@ subscriptions model =
 
 view : Model -> Html Msg
 view model =
-    div [ class "container mx-auto pt-32 font-sans text-lg" ]
+    div [ class "container mx-auto pt-32 text-lg" ]
         [ div [ class "flex justify-center" ]
             [ div [ class "w-64" ]
-                [ div [ class "font-bold text-xl mb-2" ] [ text "Items" ]
-                , div [ class "p-2 text-center border border-grey-light shadow-lg h-full" ]
+                [ div [ class "card-title" ] [ text "Items" ]
+                , div
+                    [ class "card h-full text-center" ]
                     (List.indexedMap viewInputItem model.inputItems)
                 ]
-            , div [ class "w-48 text-center p-4" ]
+            , div [ class "w-48 p-4 text-center" ]
                 [ button
-                    [ class "bg-blue shadow-lg text-white uppercase py-2 px-4 w-full rounded-full my-4"
+                    [ class "btn btn-blue w-full my-4"
                     , onClick AddItem
                     ]
                     [ text "add item" ]
                 , button
-                    [ class "bg-blue shadow-lg text-white uppercase py-2 px-4 w-full rounded-full my-4"
+                    [ class "btn btn-blue w-full my-4"
                     , onClick Shuffle
                     ]
                     [ text "shuffle" ]
                 , button
-                    [ class "bg-red shadow-lg text-white uppercase py-2 px-4 w-full rounded-full my-4"
+                    [ class "btn btn-red w-full my-4"
                     , onClick Reset
                     ]
                     [ text "reset" ]
                 ]
             , div [ class "w-64" ]
-                [ div [ class "font-bold text-xl mb-2" ] [ text "Result" ]
+                [ div [ class "card-title" ] [ text "Result" ]
                 , div
-                    [ class "p-2 text-center border border-grey-light shadow-lg h-full" ]
+                    [ class "card h-full text-center" ]
                     (List.map viewResultItem model.resultItems)
                 ]
             ]
@@ -138,7 +139,7 @@ viewInputItem i item =
         [ placeholder "input string"
         , value item
         , onInput (ChangeItemValue i)
-        , class "my-2 appearance-none bg-transparent border-b border-b-2 border-grey-light py-1 px-2 text-grey-darker leading-tight focus:outline-none focus:border-blue"
+        , class "input-text focus-blue my-2"
         ]
         []
 
@@ -146,7 +147,7 @@ viewInputItem i item =
 viewResultItem : String -> Html Msg
 viewResultItem item =
     input
-        [ class "my-2 appearance-none bg-transparent border-b border-b-2 border-grey-light py-1 px-2 text-grey-darker leading-tight pointer-events-none"
+        [ class "input-text pointer-events-none my-2"
         , value item
         ]
         []
